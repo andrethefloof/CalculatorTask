@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url("https://img.magnific.com/free-photo/top-view-desk-concept-with-notepad_23-2148604955.jpg?semt=ais_hybrid&w=740&q=80");
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50vh;
+    }
+    legend {
+      font-size: 30px;
+      font-weight: bold;
+      outline: 3px solid #000000b7;
+    }
+    fieldset {
+      width: 400px;
+      height: 250px;
+      background-color: rgba(132, 205, 218, 0.658);
+      border: 3px solid #000000b7;
+      font-size: 30px;
+      padding: 50px;
+    }
+
+    table {
+      border-spacing: 0 5px;
+    }
+    input[name="fnumber"],
+    input[name="lnumber"] {
+      width: 200px;
+      height: 30px;
+      font-size: 20px;
+      box-sizing: border-box;
+    }
+    select {
+      width: 50px;
+      height: 30px;
+      font-size: 20px;
+    }
+    button {
+      width: 120px;
+      height: 36px;
+      font-size: 16px;
+    }
+    #output {
+      display: block;
+      max-width: 150px;
+      overflow-wrap: anywhere;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <fieldset>
+      <legend>Calculator</legend>
+      <table>
+        <tr>
+          <td>
+            <label for="method">Choose Operation Method:</label>
+            <select name="operator" id="operator-1">
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="fnumber">First Number:</label>
+          </td>
+          <td>
+            <input
+              type="num1"
+              id="nr1"
+              name="fnumber"
+              placeholder="Enter an amount..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="lnumber">Last Number:</label></td>
+          <td>
+            <input
+              type="num2"
+              id="nr2"
+              name="lnumber"
+              placeholder="Enter an amount..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" onclick="calcRes()">RESULTS</button>
+          </td>
+          <td>
+            <strong id="output">0</strong>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <script>
+      function calcRes() {
+        const num1 = parseFloat(document.getElementById("nr1").value);
+        const num2 = parseFloat(document.getElementById("nr2").value);
+        const operator = document.getElementById("operator-1").value;
+        const show = document.getElementById("output");
+        if (isNaN(num1) || isNaN(num2)) {
+          show.innerText = "Enter a value in both boxes!";
+          return;
+        }
+        let answer;
+        if (operator == "+") {
+          answer = num1 + num2;
+        } else if (operator == "-") {
+          answer = num1 - num2;
+        } else if (operator == "*") {
+          answer = num1 * num2;
+        } else if (operator == "/") {
+          answer = num1 / num2;
+        }
+        show.innerText = answer;
+      }
+    </script>
+  </body>
+</html>
